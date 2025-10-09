@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Terminal Project</title>
+</head>
+<body>
+    <h1>My Full Project</h1>
+    <button id="my-button">Get Data from Backend</button>
+    <p>Server Response: <strong id="response-text">...</strong></p>
+
+    <script>
+        document.getElementById('my-button').addEventListener('click', () => {
+            fetch('http://localhost:3000/api/data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('response-text').textContent = data.message;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

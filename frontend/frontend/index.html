@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+</head>
+<body>
+    <h1>Frontend and Backend Project</h1>
+    <button id="data-button">Get Message From Backend</button>
+    <p>Message: <strong id="message">...</strong></p>
+
+    <script>
+        document.getElementById('data-button').addEventListener('click', () => {
+            fetch('http://localhost:3000/api/data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('message').textContent = data.message;
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    document.getElementById('message').textContent = 'Failed to connect to backend.';
+                });
+        });
+    </script>
+</body>
+</html>
